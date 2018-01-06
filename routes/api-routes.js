@@ -14,7 +14,7 @@ function testUser(req, res, next){
 }
 
 function testTechnicianOrAdmin(req, res, next){
-  if(req.user.technician|| req.user.technician)
+  if(req.user.technician|| req.user.admin)
     next()
   else{
     res.status(401).send('unauthorised')
