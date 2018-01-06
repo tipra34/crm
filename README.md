@@ -4,11 +4,6 @@ crm for microworld solution.
 ## Dependencies
 Node.JS, React.JS, Expressjs, Mongodb, Mongoose
 
-## Images
-![Sales](https://github.com/tipra34/crm/raw/master/images/sales.png)<br>
-![Agents](https://github.com/tipra34/crm/raw/master/images/agents.png)<br>
-![Users](https://github.com/tipra34/crm/raw/master/images/users.png)
-
 ## Requirements
 <ol>
   <li> As an authenticated user with admin rights
@@ -29,3 +24,8 @@ Node.JS, React.JS, Expressjs, Mongodb, Mongoose
     </ol>
   </li>
 </ol>
+
+## Images
+![Sales](https://github.com/tipra34/crm/raw/master/images/sales.png)<br>
+![Agents](https://github.com/tipra34/crm/raw/master/images/agents.png)<br>
+![Users](https://github.com/tipra34/crm/raw/master/images/users.png)
