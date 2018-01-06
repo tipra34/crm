@@ -13,8 +13,8 @@ function testUser(req, res, next){
       res.redirect('/login')
 }
 
-function testTechnician(req, res, next){
-  if(req.user.technician)
+function testTechnicianOrAdmin(req, res, next){
+  if(req.user.technician|| req.user.technician)
     next()
   else{
     res.status(401).send('unauthorised')
@@ -35,25 +35,7 @@ router.get('/user',(req, res)=>{
   res.send({username: req.user.username})
 })
 
-router.use(testAdmin)
-
-router.post('/addsale',(req, res)=>{
-  let {date, saleid, agentid, amount,phno, cusname, details} = req.body
-  new Sale({
-    _id: saleid,
-    date: new Date(date),
-    amount: Number(amount),
-    agent: agentid,
-    cusname,
-    phno: Number(phno),
-    details
-  }).save((err)=>{
-    if(err)
-      res.status(500).send({code:500})
-    else
-      res.send({code:200})
-  })
-})
+router.use(testTechnicianOrAdmin)
 
 router.get('/querysale',(req, res)=>{
   let queryData = req.query
@@ -80,6 +62,26 @@ router.get('/querysale',(req, res)=>{
     res.send({salesList: result})
   }).catch((err)=>{
     console.log(err)
+  })
+})
+
+router.use(testAdmin)
+
+router.post('/addsale',(req, res)=>{
+  let {date, saleid, agentid, amount,phno, cusname, details} = req.body
+  new Sale({
+    _id: saleid,
+    date: new Date(date),
+    amount: Number(amount),
+    agent: agentid,
+    cusname,
+    phno: Number(phno),
+    details
+  }).save((err)=>{
+    if(err)
+      res.status(500).send({code:500})
+    else
+      res.send({code:200})
   })
 })
 
